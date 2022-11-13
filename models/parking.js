@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const estacionamentoSchema = new mongoose.Schema(
+const ParkingSchema = new mongoose.Schema(
     {
         paid: Boolean,
         left: Boolean,
@@ -14,7 +14,7 @@ const estacionamentoSchema = new mongoose.Schema(
     }
 )
 
-estacionamentoSchema.pre('save', function (next) {
+ParkingSchema.pre('save', function (next) {
     let now = Date.now();
 
     this.paid = false;
@@ -29,6 +29,6 @@ estacionamentoSchema.pre('save', function (next) {
     next()    
 })
 
-const EstacionamentoModel = mongoose.model('Estacionamento', estacionamentoSchema)
+const ParkingModel = mongoose.model('Parking', ParkingSchema)
 
-module.exports = EstacionamentoModel
+module.exports = ParkingModel

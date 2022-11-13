@@ -11,7 +11,8 @@ services:
       MONGO_INITDB_ROOT_USERNAME: ${DB_USER}
       MONGO_INITDB_ROOT_PASSWORD: ${DB_PASS}
   api:
-    image: node:latest
+    build: .
+    image: nodejs_pfz:0.0.1
     container_name: api-pfz
     restart: always
     env_file:
@@ -23,8 +24,7 @@ services:
     volumes:
       - .:/usr/src/app
     working_dir: /usr/src/app
-    #command: npm install
-    command: npm start
+    command: bash -c "npm install; npm start --color=always"  
     logging:
       driver: "json-file"
       options:

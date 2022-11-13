@@ -1,10 +1,11 @@
 {
   "name": "nodejs-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "Desafio",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "test": "env-cmd -f ./__test__/test.env jest --watchAll",
+    "start": "env-cmd -f ./.env nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -14,6 +15,8 @@
   "author": "Gustavo Felipe",
   "license": "MIT",
   "dependencies": {
+    "dotenv": "^16.0.3",
+    "env-cmd": "^10.1.0",
     "express": "^4.18.2",
     "mongoose": "^6.7.2"
   },
@@ -22,7 +25,8 @@
   },
   "homepage": "https://github.com/GustavoFelipe-95/nodeJS-API#readme",
   "devDependencies": {
-    "dotenv": "^16.0.3",
-    "nodemon": "^2.0.20"
+    "jest": "^29.3.1",
+    "nodemon": "^2.0.20",
+    "supertest": "^6.3.1"
   }
 }

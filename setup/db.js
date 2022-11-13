@@ -1,11 +1,12 @@
 const mongoose        = require('mongoose');
 
-const { DB_USER, DB_PASS, DB_HOST, DB_PORT, DB_NAME } = process.env;
+const { DB_USER, DB_PASS, DB_HOST, DB_PORT, DB_NAME, SERVER_PORT } = process.env;
 
 mongoose.connect(
     `mongodb://${DB_USER}:${DB_PASS}@${DB_HOST}:${DB_PORT}/${DB_NAME}?authSource=admin`,
-    { useNewUrlParser: true, }
-);
-
-mongoose.connection.on('error', () => console.log('Connection error:'));
-mongoose.connection.once('open', () => console.log('Database connected'));
+    {
+        useNewUrlParser: true,
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    }
+).then(()=> {console.log('DataBase - OK'); console.log(`Serviço Disponível na porta ${SERVER_PORT}`)})

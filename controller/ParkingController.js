@@ -1,4 +1,4 @@
-const EstacionamentoModel = require('./../models/estacionamento');
+const ParkingModel = require('./../models/parking');
 
 module.exports = {
 
@@ -20,7 +20,7 @@ module.exports = {
         const result = { plate };
 
         try {
-            const parkingSign = await EstacionamentoModel.findOne(
+            const parkingSign = await ParkingModel.findOne(
                 { plate: plate, left: false }
             );
 
@@ -29,7 +29,7 @@ module.exports = {
                 return;
             }
 
-            const newPlate          = await EstacionamentoModel.create(result);
+            const newPlate          = await ParkingModel.create(result);
             const objectId          = newPlate._id;
             const myObjectIdString  = objectId.toString();       
             newPlate.reservation    = myObjectIdString.substr(0, 6);
@@ -52,11 +52,9 @@ module.exports = {
         const result = { paid, parking_payment };
 
         try {
-            const parkingSign = await EstacionamentoModel.findOne(
+            const parkingSign = await ParkingModel.findOne(
                 { plate: plate, left: false }
             );
-
-            console.log(parkingSign);
 
             if(!parkingSign){
                 res.status(422).json({message: 'Não há registro desta placa'});
@@ -73,7 +71,7 @@ module.exports = {
                 return;
             }
 
-            await EstacionamentoModel.updateOne({ _id: parkingSign._id }, result);
+            await ParkingModel.updateOne({ _id: parkingSign._id }, result);
 
             res.status(200).json({
                 reservation: parkingSign.reservation,
@@ -93,11 +91,11 @@ module.exports = {
         const result = { left, parking_exit };
 
         try {
-            const parkingSign = await EstacionamentoModel.findOne(
+            const parkingSign = await ParkingModel.findOne(
                 { plate: plate, left: false }
             );
 
-            if(parkingSign.length === 0){
+            if(!parkingSign){
                 res.status(422).json({message: 'Não há registro desta placa'});
                 return;
             }
@@ -107,9 +105,9 @@ module.exports = {
                 return;
             }
 
-            await EstacionamentoModel.updateOne({ _id: parkingSign._id }, result);
+            await ParkingModel.updateOne({ _id: parkingSign._id }, result);
 
-            const newResult = await EstacionamentoModel.findOne({ _id: parkingSign._id });
+            const newResult = await ParkingModel.findOne({ _id: parkingSign._id });
 
             res.status(200).json({
                 reservation: newResult.reservation,
@@ -126,7 +124,7 @@ module.exports = {
         var param   = req.params.id;
         const plate = param.toUpperCase();
         try {
-            const historic = await EstacionamentoModel.find({ plate: plate });
+            const historic = await ParkingModel.find({ plate: plate });
             if(historic.length === 0){
                 res.status(422).json({message: 'Não há nenhum registro desta placa'});    
                 return;
@@ -177,5 +175,15 @@ module.exports = {
             res.status(500).json({ error: error });
         }
     },
+
+    async deleteTest(req, res){
+        // Só sera usado para apagar todos os dados de teste
+        try{
+            const hist = await ParkingModel.deleteMany();
+            res.status(200).json({message: 'Placa removida com sucesso.'});
+        } catch (error) {
+            res.status(500).json({ error: error });
+        }
+    }
 
 }

@@ -8,6 +8,7 @@ describe("Entrada no estacionamento", () => {
         expect(response.statusCode).toEqual(200);
     }, 15000);
 
+    
     it("Entrada autorizada", async () => {
         const response = await request(app).post("/parking").send({plate: 'AAA-9999'});
         expect(response.statusCode).toEqual(201);

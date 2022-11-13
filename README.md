@@ -5,6 +5,9 @@ Deve-se criar uma API de controle de estacionamento:
 > * Não deve liberar saída sem pagamento;
 > * Deve fornecer um histórico por placa.
 
+### Tecnologias
+A linguagem utilizada para o back-end neste desafio foi nodejs. Para o banco de dados utilizado o mongodb.
+
 ### Comando a ser executado para subir a aplicação Docker
 Logo apos efetuar o clone deste projeto execute os seguintes comandos, na sequencia:
 
@@ -32,7 +35,7 @@ _**Obs**: Ao executar este comando o **build** será feito em conjunto._
 
 > **POST** localhost:3000/parking/
 >
-> { "plate": "AAA-9999" }
+> { plate: 'FAA-1234' }
 >
 > **Resposta:**
 > {

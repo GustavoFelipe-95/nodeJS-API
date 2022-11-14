@@ -84,7 +84,7 @@ _**Obs**: Os testes podem vir a dar timeout. Basta persistir._
 | ------------- |-------------|
 | 11/11/2022 (anoite) | Leitura do desafio e configuração inicial do Docker. |
 | 12/11/2022 (todo o dia) | Elaboração da API em NodeJS utilizando o mongoDB. |
-| 13/11/2022 (pela manhã) | Ajustes na configuração do docker-compose e do Dockfile. |
+| 13/11/2022 (pela manhã) | Ajustes na configuração do docker-compose e do Dockerfile. |
 | 13/11/2022 (a tarde) | Criação do testes automatizados. |
 | 13/11/2022 (anoite) | Finalização do desafio. |
 

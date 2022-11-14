@@ -23,11 +23,11 @@ npm i express mongoose dotenv env-cmd
 npm i nodemon jest supertest -D
 ```
 
-Para criar os containers necesarios para o desafio:
+Para criar os containers necessários para o desafio:
 ```
 docker-compose up
 ```
-_**Obs**: Ao executar este comando o **build** será feito em conjunto._
+_**Obs**: Primeiramente, certifique-se que o docker esta em execução, em seguida, ao executar este comando o **build** será feito em conjunto._
 
 ## Ações disponiveis na API
 
@@ -67,7 +67,7 @@ _**Obs**: Devia retornar um número de "reserva" e validar a máscara AAA-9999._
 >     "plate": "AAA-9999"
 > }
 
-_**Obs**: As portas usada para executar este desafio estão presentes no arquivo **.env**._
+_**Obs**: As portas usadas para executar este desafio estão presentes no arquivo **.env**._
 
 ### Executar testes
 Caso queira executar o script de teste, basta executar o comando:
